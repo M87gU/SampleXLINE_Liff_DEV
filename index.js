@@ -63,7 +63,7 @@ async function fetchFormData() {
 // Initialize LIFF
 async function initializeLiff() {
   try {
-    await liff.init({ liffId: U9714467bf7310a81da22146ed10705ca }); // Replace YOUR_LIFF_ID with your actual LIFF ID
+    await liff.init({ liffId: 2006399585-yQRJWLQO }); // Replace with your actual LIFF ID
     liff.use(new SurveyPlugin(), { date: new Date() });
 
     // Display locale date
@@ -89,19 +89,15 @@ initializeLiff();
 
 // Add event listener to Submit button
 btnElement.addEventListener('click', () => {
-  const name = nameElement.value;
-  const dob = dobElement.value;
-  const gender = genderElement.value;
-  const height = parseFloat(heightElement.value);
-  const weight = parseFloat(weightElement.value);
-  const phone = phoneElement.value;
+  const name = nameElement.value.trim();
+
+  // Simple validation
+  if (!name) {
+    alert("Please fill out all fields correctly.");
+    return;
+  }
 
   resultElement.innerHTML = `
     <p>ชื่อ: ${name}</p>
-    <p>วัน เดือน ปีเกิด: ${dob}</p>
-    <p>เพศ: ${gender}</p>
-    <p>น้ำหนัก: ${weight} kg</p>
-    <p>ส่วนสูง: ${height} cm</p>
-    <p>เบอร์ติดต่อกลับ: ${phone}</p>
   `;
 });
